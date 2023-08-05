@@ -253,7 +253,8 @@ pub unsafe fn gemm_basic_generic<
             );
             return;
         }
-        if n <= 1 && lhs_rs.unsigned_abs() <= lhs_cs.unsigned_abs() {
+        if n <= 1 {
+            // && lhs_rs.unsigned_abs() <= lhs_cs.unsigned_abs() {
             gemv::gemv(
                 simd, m, n, k, dst, dst_cs, dst_rs, lhs, lhs_cs, lhs_rs, rhs, rhs_cs, rhs_rs,
                 alpha, beta, mul_add,
