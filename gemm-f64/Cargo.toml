@@ -1,6 +1,6 @@
 [package]
-name = "gemm-f64"
-version = "0.15.4"
+name = "candle-gemm-f64"
+version = "0.15.6"
 edition = "2021"
 authors = ["sarah <>"]
 description = "Playground for matrix multiplication algorithms"
@@ -19,7 +19,7 @@ num-complex = { workspace = true }
 rayon = { workspace = true }
 paste = { workspace = true }
 
-gemm-common = { version = "0.15", path = "../gemm-common" }
+gemm-common = { version = "0.15", path = "../gemm-common", package = "candle-gemm-common" }
 
 [features]
 default = ["std"]
