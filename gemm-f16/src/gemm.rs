@@ -1079,12 +1079,19 @@ pub mod f16 {
         }
 
         #[cfg(target_arch = "aarch64")]
+        #[cfg(target_feature = "fp16")]
         {
             if gemm_common::feature_detected!("neon") {
                 neon::gemm_basic
             } else {
                 scalar::gemm_basic
             }
+        }
+
+        #[cfg(target_arch = "aarch64")]
+        #[cfg(not(target_feature = "fp16"))]
+        {
+            scalar::gemm_basic
         }
 
         #[cfg(not(any(target_arch = "x86", target_arch = "x86_64", target_arch = "aarch64")))]
@@ -1147,6 +1154,7 @@ pub mod f16 {
     }
 
     #[cfg(target_arch = "aarch64")]
+    #[cfg(target_feature = "fp16")]
     mod neon {
         use super::*;
         use crate::microkernel::neon::f16::{MR_DIV_N, NR, UKR};

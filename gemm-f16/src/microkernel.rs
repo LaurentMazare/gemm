@@ -344,6 +344,7 @@ pub mod neon {
         }
     }
 
+    #[cfg(target_feature = "fp16")]
     pub mod f16 {
         use core::arch::{aarch64::uint16x8_t, asm};
         use core::mem::transmute;
