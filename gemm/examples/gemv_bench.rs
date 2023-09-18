@@ -6,7 +6,7 @@ pub fn run(m: usize, n: usize, k: usize, niters: usize) {
     let (lhs_rs, lhs_cs) = (k, 1);
     let (rhs_rs, rhs_cs) = (1, k);
     let mut run = move || unsafe {
-        gemm::gemm(
+        candle_gemm::gemm(
             m,
             n,
             k,
@@ -25,7 +25,7 @@ pub fn run(m: usize, n: usize, k: usize, niters: usize) {
             false,
             false,
             false,
-            gemm::Parallelism::None,
+            candle_gemm::Parallelism::None,
         )
     };
     for _i in 0..10 {
